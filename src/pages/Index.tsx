@@ -1,13 +1,33 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import HeroBanner from '@/components/home/HeroBanner';
+import CategoryGrid from '@/components/home/CategoryGrid';
+import FlashSale from '@/components/home/FlashSale';
+import { Helmet } from 'react-helmet-async';
+import ProductCard from '@/components/shared/ProductCard';
+import { products } from '@/data/mock';
 
 const Index = () => {
+  const featured = [...products].sort((a,b) => (b.createdAt || '').localeCompare(a.createdAt || '')).slice(0,8);
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <main className="min-h-screen bg-background">
+      <Helmet>
+        <title>Irsa Traders — Online Shopping in Pakistan</title>
+        <meta name="description" content="Shop electronics, fashion, home & kitchen at Irsa Traders. Flash sales and best prices!" />
+        <link rel="canonical" href="/" />
+      </Helmet>
+      <div className="container mx-auto py-6 space-y-8">
+        <HeroBanner />
+        <CategoryGrid />
+        <FlashSale />
+        <section className="mt-8">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-xl font-semibold">Featured Products</h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {featured.map(p => <ProductCard key={p.id} product={p} />)}
+          </div>
+        </section>
       </div>
-    </div>
+    </main>
   );
 };
 
