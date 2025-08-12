@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">IrsaMarketPlaza</string>
+    <string name="title_activity_main">IrsaMarketPlaza</string>
+    <string name="package_name">com.irsa.marketplaza</string>
+    <string name="custom_url_scheme">com.irsa.marketplaza</string>
+</resources>
